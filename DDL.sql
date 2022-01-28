@@ -1,8 +1,13 @@
+/*CRIANDO BANCO DE DADOS*/
+create database aluguel_carro
+default character set utf8
+default collate utf8_general_ci;
+
+/*CRIA√á√ÉO DE TABELAS*/
+
 use aluguel_carro;
 
-/*CRIA«√O DE TABELAS*/
-
-/*Tabela de Perfil de usu·rio*/
+/*Tabela de Perfil de usu√°rio*/
 CREATE TABLE `perfil_user` (
   `idperfil` int NOT NULL AUTO_INCREMENT,
   `nome_perfil` varchar(255) NOT NULL,
@@ -10,14 +15,14 @@ CREATE TABLE `perfil_user` (
   PRIMARY KEY (`idperfil`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-/*Tabela de Tipos de VeÌculo*/
+/*Tabela de Tipos de Ve√≠culo*/
 CREATE TABLE `tipo_veiculo` (
   `idtipo_veiculo` int NOT NULL AUTO_INCREMENT,
   `nome_tipo_veiculo` varchar(255) NOT NULL,
   PRIMARY KEY (`idtipo_veiculo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-/*Tabela de usu·rios*/
+/*Tabela de usu√°rios*/
 CREATE TABLE `user` (
   `iduser` int NOT NULL AUTO_INCREMENT,
   `nome_user` varchar(255) NOT NULL,
