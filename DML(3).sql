@@ -10,3 +10,14 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `tr_monitoramento_insert` AFTER INSERT
     
 end$$
 DELIMITER ;
+
+DELIMITER $$
+$$
+CREATE DEFINER=`root`@`localhost` TRIGGER `tr_monitoramento_update` AFTER INSERT ON `registro_aluguel` FOR EACH ROW begin
+	insert into logs (acao, idveiculo, iduser)
+
+	select 'uptdated', idveiculo, iduser
+	from registro_aluguel;
+    
+end$$
+DELIMITER ;
