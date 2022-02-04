@@ -67,7 +67,7 @@ CREATE TABLE `registro_aluguel` (
   `iduser` int NOT NULL,
   `idperfil` int NOT NULL,
   `idcliente` int NOT NULL,
-  PRIMARY KEY (`num_registro`),
+  PRIMARY KEY (`idregistro`),
   FOREIGN KEY (`idveiculo`) REFERENCES `veiculo` (`idveiculo`),
   FOREIGN KEY (`iduser`) REFERENCES `user` (`iduser`),
   FOREIGN KEY (`idperfil`) REFERENCES `perfil_user` (`idperfil`),
