@@ -1,18 +1,18 @@
 use aluguel_carro;
 
-/*Inserindo Valores ‡s tabelas*/
+/*Inserindo Valores √†s tabelas*/
 
-/*Tabela Perfil de Usu·rio*/
+/*Tabela Perfil de Usu√°rio*/
 INSERT INTO `perfil_user` (idperfil, nome_perfil, data_criacao) 
 VALUES (1,'administrador','2022-01-01'), (2,'vendedor','2022-01-01');
 
-/*Tabela Tipos de VeÌculos*/
+/*Tabela Tipos de Ve√≠culos*/
 INSERT INTO `tipo_veiculo` (idtipo_veiculo, nome_tipo_veiculo)
-VALUES (1,'Ultilit·rio'),(2,'Passeio');
+VALUES (1,'Ultilit√°rio'),(2,'Passeio');
 
-/*Tabela de Usu·rios*/
+/*Tabela de Usu√°rios*/
 INSERT INTO `user` (iduser, nome_user, idperfil)
-VALUES (1, 'Marcelo Vinicius Santos', 2),(2,'Julio Brito Caraco', 2),(3, 'Jo„o Grilo', 2),
+VALUES (1, 'Marcelo Vinicius Santos', 2),(2,'Julio Brito Caraco', 2),(3, 'Jo√£o Grilo', 2),
 (4,'Varanalvo Criaspo', 2),(5,'Denunciano Faleceno',2 ),(6,'Mr. Expresso', 2),
 (7,'Ferroso Forte',2,7),(8,'Caio Ribeiro',2,8),(9,'Diogo Freire', 2),
 (10,'Fernando Fernandes', 2),
@@ -40,18 +40,18 @@ VALUES (1,'Ana Clara Da Silva','145.552.873-82','1997-04-07','34974291008','B','
 (10,'Kezia Roberta','768.987.345-45','1989-08-15','87364345871','C','8319232545','krta@gmail.com','Portugal');
 
 /*Tabela de Registro de Aluguel*/
-INSERT INTO `registro_aluguel` (num_registro, valor, data_entrega, data_saida, idveiculo, iduser, idperfil, idcliente)
-VALUES (1,'R$10.000','2022-03-07','2024-12-14', 1, 1, 2, 1),
-(2,'R$6.000,00','2024-09-03','2022-04-25', 2, 2, 2, 2),
-(3,'R$42.000,00','2024-05-03','2022-03-06', 3, 3, 2, 3),
-(4,'R$1.500.000,00','3047-07-08','2022-04-10', 4, 4, 2, 4),
-(5,'R$41.000,00','2027-09-10','2022-07-03',5, 5, 2, 5),
-(6,'R$29.000,00','2025-11-07','2022-07-03', 6, 6, 2, 6),
-(7,'R$44.000,00','2030-07-09','2023-09-07', 7, 7, 2, 7),
-(8,'R$46.000,00','2026-09-03','2023-09-10', 9, 8, 2, 8),
-(9,'R$100.000,00','2029-04-10','2023-03-17',8, 9, 2, 9),
-(10,'R$200.000,00','2031-07-09','2030-11-03', 10, 10, 2, 10),
-(11,'R$50,000,00','2024-10-12','2025-10-30',1, 1, 2, 2);
+INSERT INTO `registro_aluguel` (idregistro, valor, data_entrega, data_saida, idveiculo, iduser, idperfil, idcliente)
+VALUES (1, '10000','2022-03-07','2024-12-14', 1, 1, 2, 1),
+(2, '60000,00','2024-09-03','2022-04-25', 2, 2, 2, 2),
+(3,'42000,00','2024-05-03','2022-03-06', 3, 3, 2, 3),
+(4, '1500000,00','3047-07-08','2022-04-10', 4, 4, 2, 4),
+(5, '41000,00', '2027-09-10','2022-07-03',5, 5, 2, 5),
+(6, '29000,00','2025-11-07','2022-07-03', 6, 6, 2, 6),
+(7,'44000,00','2030-07-09','2023-09-07', 7, 7, 2, 7),
+(8,'46000,00','2026-09-03','2023-09-10', 9, 8, 2, 8),
+(9,'100000,00','2029-04-10','2023-03-17',8, 9, 2, 9),
+(10,'200000,00','2031-07-09','2030-11-03', 10, 10, 2, 10),
+(11,'50000,00','2024-10-12','2025-10-30',1, 1, 2, 2);
 
 
 

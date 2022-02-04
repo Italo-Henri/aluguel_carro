@@ -1,4 +1,4 @@
-use aluguel_carro
+use aluguel_carro;
 
 /*Mudando os modelos dos carros*/
 update veiculo 
@@ -17,10 +17,10 @@ where idveiculo = 8;
 
 /*Deletando Registros*/
 delete from registro_aluguel 
-where num_registro = 2;
+where idregistro = 2;
 
 delete from registro_aluguel 
-where num_registro = 3;
+where idregistro = 3;
 
 /*Deletando Usuarios*/
 delete from `user` 
