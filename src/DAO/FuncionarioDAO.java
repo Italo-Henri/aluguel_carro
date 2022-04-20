@@ -16,7 +16,7 @@ public class FuncionarioDAO {
     ArrayList<FuncionarioDTO> lista = new ArrayList<>();
 
     public void cadastrarFuncionario(FuncionarioDTO objfuncionariodto) {
-        String sql = "INSERT INTO usuarios (nome, RG, expedidor, cpf, sexo, data_nasc, email, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nome, RG, expedidor, cpf, sexo, data_nasc, email, telefone, login, senha, id_perfil) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         conn = new ConexaoDAO().conectaBD();
 
@@ -29,8 +29,10 @@ public class FuncionarioDAO {
             pstm.setString(5, objfuncionariodto.getSexo());
             pstm.setString(6, objfuncionariodto.getData_nascimento());
             pstm.setString(7, objfuncionariodto.getEmail());
-            pstm.setString(8, objfuncionariodto.getLogin());
-            pstm.setString(9, objfuncionariodto.getSenha());
+            pstm.setString(8, objfuncionariodto.getTelefone());
+            pstm.setString(9, objfuncionariodto.getLogin());
+            pstm.setString(10, objfuncionariodto.getSenha());
+            pstm.setInt(11, objfuncionariodto.getId_perfil());
 
             pstm.execute();
             pstm.close();
@@ -59,8 +61,10 @@ public class FuncionarioDAO {
                 objfuncionariodto.setSexo(rs.getString("sexo"));
                 objfuncionariodto.setData_nascimento(rs.getString("data_nasc"));
                 objfuncionariodto.setEmail(rs.getString("email"));
+                objfuncionariodto.setTelefone(rs.getNString("telefone"));
                 objfuncionariodto.setLogin(rs.getString("login"));
                 objfuncionariodto.setSenha(rs.getString("senha"));
+                objfuncionariodto.setId_perfil(rs.getInt("id_perfil"));
 
                 lista.add(objfuncionariodto);
             }
