@@ -27,7 +27,7 @@ public class FuncionarioDAO {
             pstm.setString(3, objfuncionariodto.getExpedidor());
             pstm.setString(4, objfuncionariodto.getCPF());
             pstm.setString(5, objfuncionariodto.getSexo());
-            pstm.setString(6, objfuncionariodto.getData_nascimento());
+            pstm.setString(6, objfuncionariodto.getData_nasc());
             pstm.setString(7, objfuncionariodto.getEmail());
             pstm.setString(8, objfuncionariodto.getTelefone());
             pstm.setString(9, objfuncionariodto.getLogin());
@@ -59,7 +59,7 @@ public class FuncionarioDAO {
                 objfuncionariodto.setExpedidor(rs.getString("expedidor"));
                 objfuncionariodto.setCPF(rs.getString("cpf"));
                 objfuncionariodto.setSexo(rs.getString("sexo"));
-                objfuncionariodto.setData_nascimento(rs.getString("data_nasc"));
+                objfuncionariodto.setData_nasc(rs.getString("data_nasc"));
                 objfuncionariodto.setEmail(rs.getString("email"));
                 objfuncionariodto.setTelefone(rs.getNString("telefone"));
                 objfuncionariodto.setLogin(rs.getString("login"));

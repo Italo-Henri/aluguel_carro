@@ -2,7 +2,15 @@ package DTO;
 
 public class FuncionarioDTO {
 
-    private String nome, email, RG, CPF, expedidor, login, senha, sexo, data_nascimento, telefone;
+    private String nome, email, RG, CPF, expedidor, login, senha, sexo, telefone, data_nasc;
+
+    public String getData_nasc() {
+        return data_nasc;
+    }
+
+    public void setData_nasc(String data_nasc) {
+        this.data_nasc = data_nasc;
+    }
 
     public String getTelefone() {
         return telefone;
@@ -19,14 +27,6 @@ public class FuncionarioDTO {
 
     public void setId_perfil(int id_perfil) {
         this.id_perfil = id_perfil;
-    }
-    
-    public String getData_nascimento() {
-        return data_nascimento;
-    }
-
-    public void setData_nascimento(String data_nascimento) {
-        this.data_nascimento = data_nascimento;
     }
    
     public String getNome() {
