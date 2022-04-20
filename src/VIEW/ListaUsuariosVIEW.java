@@ -265,7 +265,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                     lista.get(num).getExpedidor(),
                     lista.get(num).getCPF(),
                     lista.get(num).getSexo(),
-                    lista.get(num).getData_nascimento(),
+                    lista.get(num).getData_nasc(),
                     lista.get(num).getEmail(),
                     lista.get(num).getLogin(),
                     lista.get(num).getSenha()
