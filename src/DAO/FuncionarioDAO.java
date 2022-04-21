@@ -36,6 +36,7 @@ public class FuncionarioDAO {
 
             pstm.execute();
             pstm.close();
+            
         } catch (SQLException erro) {
 
             JOptionPane.showMessageDialog(null, "FuncionarioDAO Cadastrar: " + erro);
@@ -73,6 +74,36 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "FuncionarioDAO Pesquisar: " + erro);
         }
         return lista;
+    }
+    
+    public void alterarFuncionario(FuncionarioDTO objfuncionariodto){
+        String sql = "UPDATE usuarios SET nome = ?, RG = ?, expedidor = ?, cpf = ?, sexo = ?, data_nasc = ?, email = ?, telefone = ?, "
+                + "login = ?, senha = ? WHERE id_usuario = ?";
+        
+        conn = new ConexaoDAO().conectaBD();
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setString(1, objfuncionariodto.getNome());
+            pstm.setString(2, objfuncionariodto.getRG());
+            pstm.setString(3, objfuncionariodto.getExpedidor());
+            pstm.setString(4, objfuncionariodto.getCPF());
+            pstm.setString(5, objfuncionariodto.getSexo());
+            pstm.setString(6, objfuncionariodto.getData_nasc());
+            pstm.setString(7, objfuncionariodto.getEmail());
+            pstm.setString(8, objfuncionariodto.getTelefone());
+            pstm.setString(9, objfuncionariodto.getLogin());
+            pstm.setString(10, objfuncionariodto.getSenha());
+            pstm.setInt(11, objfuncionariodto.getId_usuario());
+
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "FuncionarioDAO Alterar: " + erro);
+        }
+        
     }
 
 }
