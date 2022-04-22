@@ -16,7 +16,7 @@ public class FuncionarioDAO {
     ArrayList<FuncionarioDTO> lista = new ArrayList<>();
 
     public void cadastrarFuncionario(FuncionarioDTO objfuncionariodto) {
-        String sql = "INSERT INTO usuarios (nome, RG, expedidor, cpf, sexo, data_nasc, email, telefone, login, senha, id_perfil) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios (nome, RG, expedidor, cpf, sexo, data_nasc, email, telefone, login, senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         conn = new ConexaoDAO().conectaBD();
 
@@ -32,7 +32,6 @@ public class FuncionarioDAO {
             pstm.setString(8, objfuncionariodto.getTelefone());
             pstm.setString(9, objfuncionariodto.getLogin());
             pstm.setString(10, objfuncionariodto.getSenha());
-            pstm.setInt(11, objfuncionariodto.getId_perfil());
 
             pstm.execute();
             pstm.close();
