@@ -77,8 +77,7 @@ public class FuncionarioDAO {
     }
     
     public void alterarFuncionario(FuncionarioDTO objfuncionariodto){
-        String sql = "UPDATE usuarios SET nome = ?, RG = ?, expedidor = ?, cpf = ?, sexo = ?, data_nasc = ?, email = ?, telefone = ?, "
-                + "login = ?, senha = ? WHERE id_usuario = ?";
+        String sql = "UPDATE usuarios SET nome = ?, RG = ?, expedidor = ?, cpf = ?, sexo = ?, data_nasc = ?, email = ?, telefone = ?, login = ?, senha = ? WHERE id_usuario = ?";
         
         conn = new ConexaoDAO().conectaBD();
 

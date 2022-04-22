@@ -3,6 +3,15 @@ package DTO;
 public class FuncionarioDTO {
 
     private String nome, email, RG, CPF, expedidor, login, senha, sexo, telefone, data_nasc;
+    public int id_usuario, id_perfil;
+
+    public int getId_perfil() {
+        return id_perfil;
+    }
+
+    public void setId_perfil(int id_perfil) {
+        this.id_perfil = id_perfil;
+    }
 
     public String getData_nasc() {
         return data_nasc;
@@ -18,15 +27,6 @@ public class FuncionarioDTO {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-    private int id_usuario, id_perfil;
-
-    public int getId_perfil() {
-        return id_perfil;
-    }
-
-    public void setId_perfil(int id_perfil) {
-        this.id_perfil = id_perfil;
     }
    
     public String getNome() {
@@ -100,5 +100,6 @@ public class FuncionarioDTO {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
 
 }
