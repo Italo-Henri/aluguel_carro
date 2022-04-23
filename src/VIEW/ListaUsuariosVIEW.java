@@ -70,7 +70,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         txtSenha = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtIdPerfil = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnInserir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,10 +153,10 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
 
         jLabel13.setText("Código de Perfil:");
 
-        jButton2.setText("Inserir Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnInserir.setText("Inserir Usuario");
+        btnInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnInserirActionPerformed(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                                 .addGap(198, 198, 198))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnInserir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnCarregarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -284,7 +284,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2)))))
+                                .addComponent(btnInserir)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
@@ -317,9 +317,9 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         AlterarFuncionario();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
+        Cadastrar();
+    }//GEN-LAST:event_btnInserirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -359,10 +359,10 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnCarregarCampos;
+    private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnTelaPrincipal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -492,6 +492,47 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
         objfuncionariodao.alterarFuncionario(objfuncionariodto);
         
+    }
+    
+        private void Cadastrar() {
+
+        try {
+
+            String nome, email, RG, CPF, expedidor, sexo, login, senha, telefone, data_nasc;
+            
+            nome = txtNome.getText();
+            email = txtEmail.getText();
+            RG = txtRg.getText();
+            expedidor = txtExpedidor.getText();
+            CPF = txtCpf.getText();
+            login = txtLogin.getText();
+            senha = txtSenha.getText();
+            data_nasc = txtDataNasc.getText();
+            telefone = txtTelefone.getText();
+            sexo = txtSexo.getText();
+            
+
+            FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
+            objfuncionariodto.setNome(nome);
+            objfuncionariodto.setEmail(email);
+            objfuncionariodto.setRG(RG);
+            objfuncionariodto.setExpedidor(expedidor);
+            objfuncionariodto.setCPF(CPF);
+            objfuncionariodto.setLogin(login);
+            objfuncionariodto.setSenha(senha);
+            objfuncionariodto.setTelefone(telefone);
+            objfuncionariodto.setData_nasc(data_nasc);
+            objfuncionariodto.setSexo(sexo);
+
+            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
+            objfuncionariodao.cadastrarFuncionario(objfuncionariodto);
+
+            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(null, "UsuarioCadastroVIEW " + erro);
+        }
+
     }
     
 }
