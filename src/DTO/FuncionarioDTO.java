@@ -3,15 +3,7 @@ package DTO;
 public class FuncionarioDTO {
 
     private String nome, email, RG, CPF, expedidor, login, senha, sexo, telefone, data_nasc;
-    public int id_usuario, id_perfil;
-
-    public int getId_perfil() {
-        return id_perfil;
-    }
-
-    public void setId_perfil(int id_perfil) {
-        this.id_perfil = id_perfil;
-    }
+    public int id_usuario;
 
     public String getData_nasc() {
         return data_nasc;
