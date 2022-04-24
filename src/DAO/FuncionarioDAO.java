@@ -64,7 +64,6 @@ public class FuncionarioDAO {
                 objfuncionariodto.setTelefone(rs.getNString("telefone"));
                 objfuncionariodto.setLogin(rs.getString("login"));
                 objfuncionariodto.setSenha(rs.getString("senha"));
-                objfuncionariodto.setId_perfil(rs.getInt("id_perfil"));
 
                 lista.add(objfuncionariodto);
             }
@@ -103,5 +102,24 @@ public class FuncionarioDAO {
         }
         
     }
+    
+    public void excluirFuncionario(FuncionarioDTO objfuncionariodto){
+        String sql = "DELETE FROM usuarios WHERE id_usuario = ?";
+        
+        conn = new ConexaoDAO().conectaBD();
 
+        try {
+            pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, objfuncionariodto.getId_usuario());
+
+            pstm.execute();
+            pstm.close();
+            
+        } catch (SQLException erro) {
+
+            JOptionPane.showMessageDialog(null, "FuncionarioDAO Excluir: " + erro);
+        }
+        
+    }
+    
 }
