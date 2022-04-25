@@ -6,29 +6,24 @@ import VIEW.util.LimitaCaracteres;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Vector;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author admin
  */
 public class ListaUsuariosVIEW extends javax.swing.JFrame {
-        
-        // centralizar componente na tela:
-        private void centralizarComponente() {
-        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
-        Dimension dw = getSize();
-        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
-    }
-    
-    /**
-     * Creates new form ListaUsuariosVIEW
-     */
+
     public ListaUsuariosVIEW() {
         initComponents();
         centralizarComponente();
         ListarValores();
-        
+        restaurarDadosComboBoxCargo();
+
         txtNome.setDocument(new LimitaCaracteres(30, LimitaCaracteres.TipoEntrada.NOME));
         txtEmail.setDocument(new LimitaCaracteres(40, LimitaCaracteres.TipoEntrada.EMAIL));
         txtDataNasc.setDocument(new LimitaCaracteres(10, LimitaCaracteres.TipoEntrada.DATA));
@@ -75,9 +70,9 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtSenha = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtIdPerfil = new javax.swing.JTextField();
         btnInserir = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        cbxCargo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,7 +88,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "NOME", "RG", "ORGÃO EXPEDIDOR", "CPF", "GENERO", "DATA NASCIMENTO", "E-MAIL", "TELEFONE", "LOGIN", "SENHA", "CODIGO PERFIL"
+                "ID", "NOME", "RG", "ORGÃO EXPEDIDOR", "CPF", "GENERO", "DATA NASCIMENTO", "E-MAIL", "TELEFONE", "LOGIN", "SENHA", "CARGO"
             }
         ) {
             Class[] types = new Class [] {
@@ -158,7 +153,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
 
         jLabel12.setText("Senha:");
 
-        jLabel13.setText("Código de Perfil:");
+        jLabel13.setText("Cargo:");
 
         btnInserir.setText("Inserir Usuario");
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +166,13 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
+            }
+        });
+
+        cbxCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        cbxCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCargoActionPerformed(evt);
             }
         });
 
@@ -225,8 +227,8 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(50, 50, 50)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel13))
+                                            .addComponent(jLabel13)
+                                            .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,7 +240,8 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                                     .addComponent(jLabel12)
                                     .addComponent(jLabel11)
                                     .addComponent(txtLogin)
-                                    .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))))
+                                    .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addComponent(jScrollPane1)))
         );
@@ -297,7 +300,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                             .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtExpedidor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtIdPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbxCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(btnExcluir)))
@@ -347,6 +350,10 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         LimparCampos();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
+    private void cbxCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCargoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -389,6 +396,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnTelaPrincipal;
+    private javax.swing.JComboBox<String> cbxCargo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -410,7 +418,6 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataNasc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtExpedidor;
-    private javax.swing.JTextField txtIdPerfil;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtRg;
@@ -418,7 +425,14 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField txtSexo;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
-    
+
+    // centralizar componente na tela:
+    private void centralizarComponente() {
+        Dimension ds = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dw = getSize();
+        setLocation((ds.width - dw.width) / 2, (ds.height - dw.height) / 2);
+    }
+
     private void ListarValores() {
         try {
             FuncionarioDAO objFuncionarioDAO = new FuncionarioDAO();
@@ -448,10 +462,10 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Listar Valores VIEW: " + erro);
         }
     }
-    
-    private void CarregarCampos(){
+
+    private void CarregarCampos() {
         int setar = tabelaUsuarios.getSelectedRow();
-        
+
         txtCodigo.setText(tabelaUsuarios.getModel().getValueAt(setar, 0).toString());
         txtNome.setText(tabelaUsuarios.getModel().getValueAt(setar, 1).toString());
         txtRg.setText(tabelaUsuarios.getModel().getValueAt(setar, 2).toString());
@@ -462,12 +476,11 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         txtEmail.setText(tabelaUsuarios.getModel().getValueAt(setar, 7).toString());
         txtTelefone.setText(tabelaUsuarios.getModel().getValueAt(setar, 8).toString());
         txtLogin.setText(tabelaUsuarios.getModel().getValueAt(setar, 9).toString());
-        txtSenha.setText(tabelaUsuarios.getModel().getValueAt(setar, 10).toString());       
-        txtIdPerfil.setText(tabelaUsuarios.getModel().getValueAt(setar, 11).toString());       
-                
+        txtSenha.setText(tabelaUsuarios.getModel().getValueAt(setar, 10).toString());
+
     }
-    
-    private void LimparCampos(){
+
+    private void LimparCampos() {
         txtCodigo.setText("");
         txtNome.setText("");
         txtEmail.setText("");
@@ -479,15 +492,13 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         txtLogin.setText("");
         txtSenha.setText("");
         txtTelefone.setText("");
-        txtIdPerfil.setText("");
         txtNome.requestFocus();
     }
-    
-    
-    private void AlterarFuncionario(){
+
+    private void AlterarFuncionario() {
         int id_usuario;
         String nome, email, RG, CPF, expedidor, login, senha, sexo, telefone, data_nasc;
-        
+
         //convertendo String para inteiro:
         id_usuario = Integer.parseInt(txtCodigo.getText());
         nome = txtNome.getText();
@@ -501,7 +512,6 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         login = txtLogin.getText();
         senha = txtSenha.getText();
 
-        
         FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
         objfuncionariodto.setId_usuario(id_usuario);
         objfuncionariodto.setNome(nome);
@@ -515,18 +525,17 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         objfuncionariodto.setLogin(login);
         objfuncionariodto.setSenha(senha);
 
-        
         FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
         objfuncionariodao.alterarFuncionario(objfuncionariodto);
-        
+
     }
-    
-        private void Cadastrar() {
+
+    private void Cadastrar() {
 
         try {
 
             String nome, email, RG, CPF, expedidor, sexo, login, senha, telefone, data_nasc;
-            
+
             nome = txtNome.getText();
             email = txtEmail.getText();
             RG = txtRg.getText();
@@ -537,7 +546,6 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
             data_nasc = txtDataNasc.getText();
             telefone = txtTelefone.getText();
             sexo = txtSexo.getText();
-            
 
             FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
             objfuncionariodto.setNome(nome);
@@ -561,19 +569,36 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         }
 
     }
-    
-    private void ExcluirFuncionario(){
-        
+
+    private void ExcluirFuncionario() {
+
         int id_usuario;
-        
+
         id_usuario = Integer.parseInt(txtCodigo.getText());
-        
+
         FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
         objfuncionariodto.setId_usuario(id_usuario);
-        
+
         FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
         objfuncionariodao.excluirFuncionario(objfuncionariodto);
-    
-    }    
-            
+
+    }
+
+    Vector<Integer> id_perfil = new Vector<Integer>();
+
+    public void restaurarDadosComboBoxCargo() {
+        try {
+            FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
+            ResultSet rs = objfuncionariodao.ListarCargo();
+
+            while (rs.next()) {
+                id_perfil.addElement(rs.getInt(1));
+                cbxCargo.addItem(rs.getString(2));
+            }
+
+        } catch (SQLException erro) {
+            JOptionPane.showMessageDialog(null, "Carregar cargo VIEW: " + erro);
+        }
+    }
+
 }

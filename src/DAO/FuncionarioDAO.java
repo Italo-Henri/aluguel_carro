@@ -74,6 +74,21 @@ public class FuncionarioDAO {
         return lista;
     }
     
+    public ResultSet ListarCargo(){
+        conn = new ConexaoDAO().conectaBD();
+        String sql = "SELECT id_perfil, tipo FROM perfil_usuario ORDER BY tipo";
+
+        try {
+            pstm = conn.prepareStatement(sql);
+            return pstm.executeQuery();
+
+        } catch (SQLException erro) {
+            System.out.println(erro.getMessage());
+            return null;
+        }
+        
+    }
+    
     public void alterarFuncionario(FuncionarioDTO objfuncionariodto){
         String sql = "UPDATE usuarios SET nome = ?, RG = ?, expedidor = ?, cpf = ?, sexo = ?, data_nasc = ?, email = ?, telefone = ?, login = ?, senha = ? WHERE id_usuario = ?";
         
