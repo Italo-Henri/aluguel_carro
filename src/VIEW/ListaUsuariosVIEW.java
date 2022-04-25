@@ -155,7 +155,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
 
         jLabel13.setText("Cargo:");
 
-        btnInserir.setText("Inserir Usuario");
+        btnInserir.setText("Cadastrar Usuario");
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserirActionPerformed(evt);
@@ -222,7 +222,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
                                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 534, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 533, Short.MAX_VALUE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(50, 50, 50)
@@ -535,7 +535,8 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
         try {
 
             String nome, email, RG, CPF, expedidor, sexo, login, senha, telefone, data_nasc;
-
+            int codcargo;
+            
             nome = txtNome.getText();
             email = txtEmail.getText();
             RG = txtRg.getText();
@@ -546,6 +547,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
             data_nasc = txtDataNasc.getText();
             telefone = txtTelefone.getText();
             sexo = txtSexo.getText();
+            codcargo = id_perfil.get(cbxCargo.getSelectedIndex() - 1);
 
             FuncionarioDTO objfuncionariodto = new FuncionarioDTO();
             objfuncionariodto.setNome(nome);
@@ -558,6 +560,7 @@ public class ListaUsuariosVIEW extends javax.swing.JFrame {
             objfuncionariodto.setTelefone(telefone);
             objfuncionariodto.setData_nasc(data_nasc);
             objfuncionariodto.setSexo(sexo);
+            objfuncionariodto.setId_usuario(codcargo);
 
             FuncionarioDAO objfuncionariodao = new FuncionarioDAO();
             objfuncionariodao.cadastrarFuncionario(objfuncionariodto);
